@@ -78,7 +78,7 @@ final class TestKernel extends Kernel
         $c->loadFromExtension('doctrine', [
             'dbal' => ['url' => '%env(resolve:DATABASE_URL)%'],
             'orm' => [
-                #'auto_generate_proxy_classes' => true,
+                // 'auto_generate_proxy_classes' => true,
                 'auto_mapping' => true,
                 'mappings' => [
                     'Test' => [
@@ -92,7 +92,7 @@ final class TestKernel extends Kernel
             ],
         ]);
 
-        $doctrineBundleV3 = !class_exists(BlacklistSchemaAssetFilter::class);
+        $doctrineBundleV3 = !\class_exists(BlacklistSchemaAssetFilter::class);
 
         if (!$doctrineBundleV3) {
             $c->prependExtensionConfig('doctrine', [
@@ -101,13 +101,13 @@ final class TestKernel extends Kernel
                 ],
             ]);
 
-            if (class_exists(LegacyReflectionFields::class) && PHP_VERSION_ID >= 80400) {
+            if (\class_exists(LegacyReflectionFields::class) && \PHP_VERSION_ID >= 80400) {
                 $c->prependExtensionConfig('doctrine', [
-                'orm' => [
-                    'enable_lazy_ghost_objects' => true,
-                    'enable_native_lazy_objects' => true,
-                ],
-            ]);
+                    'orm' => [
+                        'enable_lazy_ghost_objects' => true,
+                        'enable_native_lazy_objects' => true,
+                    ],
+                ]);
             }
         }
 
