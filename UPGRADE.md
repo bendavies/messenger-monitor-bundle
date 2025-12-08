@@ -1,5 +1,10 @@
 # Upgrade Guide
 
+## 0.6.0
+
+* `ProcessedMessage::$memoryUsage` Doctrine type changed from `int` to `bigint`.
+  A migration will be needed to update your database schema.
+
 ## 0.5.0
 
 * The Live Components were removed. If you enabled them in your config,
