@@ -76,9 +76,9 @@ final class MonitorCommandTest extends TestCase
             new Workers($cache),
             new Transports(new ServiceLocator([
                 'first' => fn() => $this->createMock(TransportInterface::class),
-                'second' => fn() => new CountableTransport(),
-                'third' => fn() => new ListableTransport(),
-                'fourth' => fn() => new CountableListableTransport(),
+                'second' => static fn() => new CountableTransport(),
+                'third' => static fn() => new ListableTransport(),
+                'fourth' => static fn() => new CountableListableTransport(),
             ]), $this->workers()),
         );
 

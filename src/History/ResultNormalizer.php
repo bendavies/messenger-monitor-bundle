@@ -190,7 +190,7 @@ final class ResultNormalizer
 
         return \trim(
             ArrayCollection::explode("\n", $output)
-                ->map(fn(string $line) => \rtrim($line, ' '))
+                ->map(static fn(string $line) => \rtrim($line, ' '))
                 ->implode("\n"),
         );
     }

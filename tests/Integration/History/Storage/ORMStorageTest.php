@@ -112,7 +112,7 @@ final class ORMStorageTest extends KernelTestCase
         $messageTypeMetrics = $this->storage()
             ->perMessageTypeMetrics(Specification::create(Period::IN_LAST_HOUR))
             ->eager()
-            ->sortBy(fn(MessageTypeMetric $metric) => $metric->type()->class())
+            ->sortBy(static fn(MessageTypeMetric $metric) => $metric->type()->class())
             ->values()
             ->all()
         ;

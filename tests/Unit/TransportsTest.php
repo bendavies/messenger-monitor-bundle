@@ -83,9 +83,9 @@ final class TransportsTest extends TestCase
         return new Transports(
             new ServiceLocator([
                 'first' => fn() => $this->createMock(TransportInterface::class),
-                'second' => fn() => new CountableTransport(),
-                'third' => fn() => new ListableTransport(),
-                'fourth' => fn() => new CountableListableTransport(),
+                'second' => static fn() => new CountableTransport(),
+                'third' => static fn() => new ListableTransport(),
+                'fourth' => static fn() => new CountableListableTransport(),
                 'fifth' => fn() => new SyncTransport($this->createMock(MessageBusInterface::class)),
             ]),
             new Workers(new WorkerCache(new NullAdapter())),

@@ -29,7 +29,7 @@ final class ProcessedMessageFactory extends PersistentObjectFactory
     {
         return parent::initialize()
             ->instantiateWith(Instantiator::withoutConstructor()->alwaysForce())
-            ->beforeInstantiate(function(array $attributes) {
+            ->beforeInstantiate(static function(array $attributes) {
                 if (!isset($attributes['waitTime'])) {
                     $attributes['waitTime'] = \max(0, $attributes['receivedAt']->format('Uv') - $attributes['dispatchedAt']->format('Uv'));
                 }

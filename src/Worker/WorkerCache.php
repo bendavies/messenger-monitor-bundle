@@ -80,7 +80,7 @@ final class WorkerCache implements \IteratorAggregate
         /** @var array<int,int> $ids */
         $ids = $this->cache->get(
             self::ID_LIST_KEY,
-            fn() => [],
+            static fn() => [],
             0, // never perform early expiration
         );
 

@@ -221,7 +221,7 @@ final class ResultNormalizerTest extends TestCase
                     'nested2' => [
                         'datetime' => new \DateTime('2021-01-04 11:22:13 America/New_York'),
                         'int' => 56,
-                        'array' => ['value1', 'value2', fn($a) => $a],
+                        'array' => ['value1', 'value2', static fn($a) => $a],
                         'resource' => $resource = \fopen(__FILE__, 'r'),
                         'nested3' => [
                             'foo' => 'bar',
@@ -229,7 +229,7 @@ final class ResultNormalizerTest extends TestCase
                         'binary' => \pack('C*', 0b11001010),
                     ],
                     'float' => 65.6,
-                    'function' => fn($a) => $a,
+                    'function' => static fn($a) => $a,
                     'object1' => new \stdClass(),
                 ],
                 'string' => 'value',

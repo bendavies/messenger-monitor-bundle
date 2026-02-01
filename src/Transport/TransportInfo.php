@@ -72,7 +72,7 @@ final class TransportInfo implements \IteratorAggregate, \Countable
 
         return new FactoryCollection(
             collect(fn() => $this->transport->all($limit)),
-            fn(Envelope $envelope) => new QueuedMessage($envelope),
+            static fn(Envelope $envelope) => new QueuedMessage($envelope),
         );
     }
 

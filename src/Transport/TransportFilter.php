@@ -55,27 +55,27 @@ final class TransportFilter implements \IteratorAggregate, \Countable
 
     public function countable(): self
     {
-        return $this->filter(fn(TransportInterface $transport) => $transport instanceof MessageCountAwareInterface);
+        return $this->filter(static fn(TransportInterface $transport) => $transport instanceof MessageCountAwareInterface);
     }
 
     public function listable(): self
     {
-        return $this->filter(fn(TransportInterface $transport) => $transport instanceof ListableReceiverInterface);
+        return $this->filter(static fn(TransportInterface $transport) => $transport instanceof ListableReceiverInterface);
     }
 
     public function excludeSync(): self
     {
-        return $this->filter(fn(TransportInterface $transport) => !$transport instanceof SyncTransport);
+        return $this->filter(static fn(TransportInterface $transport) => !$transport instanceof SyncTransport);
     }
 
     public function excludeSchedules(): self
     {
-        return $this->filter(fn(TransportInterface $transport) => !$transport instanceof SchedulerTransport);
+        return $this->filter(static fn(TransportInterface $transport) => !$transport instanceof SchedulerTransport);
     }
 
     public function excludeFailed(): self
     {
-        return $this->filter(fn(TransportInterface $transport, string $name) => !\str_contains($name, 'fail'));
+        return $this->filter(static fn(TransportInterface $transport, string $name) => !\str_contains($name, 'fail'));
     }
 
     /**
